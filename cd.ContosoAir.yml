@@ -32,7 +32,6 @@ steps:
     echo Add other tasks to build, test, and deploy your project.
     echo See https://aka.ms/yaml
   displayName: 'Run a multi-line script'
-
 - task: AzureResourceManagerTemplateDeployment@3
   inputs:
     deploymentScope: 'Resource Group'
@@ -40,13 +39,12 @@ steps:
     subscriptionId: '4ca3f103-2ad0-46e4-b466-433af9af4273'
     action: 'Create Or Update Resource Group'
     resourceGroupName: 'rg-lod'
-    location: 'East US'
+    location: 'Australia Central'
     templateLocation: 'Linked artifact'
     csmFile: '$(Pipeline.Workspace)/drop/Templates/azuredeploy.json'
     csmParametersFile: '$(Pipeline.Workspace)/drop/Templates/azuredeploy.parameters.json'
     overrideParameters: '-p_environment $(web_environment) -p_site_prefix $(web_prefix) -p_site_web_name $(web_site)'
     deploymentMode: 'Incremental'
-
 - task: AzureRmWebAppDeployment@5
   inputs:
     ConnectionType: 'AzureRM'
